@@ -3,8 +3,6 @@ import Side from "./features/sideList/Side";
 
 const Main = styled.main`
   display: flex;
-  background-color: aquamarine;
-  min-height: 100vh;
 `;
 
 function App() {
