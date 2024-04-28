@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 const StyledChatScreen = styled.div`
+  position: relative;
   flex-basis: 65%;
-  /* opacity: 0.7; */
 
   background: url("/chat-background.svg"),
     linear-gradient(
@@ -17,11 +17,12 @@ const Label = styled.p`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(50%, -50%);
+  transform: translate(-50%, -50%);
 
   font-size: 1.2rem;
   color: var(--color-gray-50);
   letter-spacing: 0.1rem;
+  text-align: center;
 
   background-color: rgba(0, 0, 0, 0.65);
   padding: 0.5rem 0.9rem;
@@ -31,7 +32,7 @@ const Label = styled.p`
 function ChatScreen() {
   return (
     <StyledChatScreen>
-      <Label>Select a chatScreen to start messaging</Label>
+      <Label>Select a chat to start messaging</Label>
     </StyledChatScreen>
   );
 }
