@@ -2,18 +2,18 @@ import styled from "styled-components";
 import Header from "./Header";
 import ConversationsList from "./ConversationsList";
 
-const StyledSide = styled.aside`
+const StyledConversations = styled.aside`
   flex-basis: 35%;
   border-right: 1px solid var(--color-gray-200);
 `;
 
-function Side() {
+function Conversations() {
   return (
-    <StyledSide>
+    <StyledConversations>
       <Header />
       <ConversationsList />
-    </StyledSide>
+    </StyledConversations>
   );
 }
 
-export default Side;
+export default Conversations;

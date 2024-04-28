@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Side from "./features/conversations/Side";
-import Chat from "./features/chat/Chat";
+import Conversations from "./features/conversations/Conversations";
+import ChatScreen from "./features/chatscreen/ChatScreen";
 
 const Main = styled.main`
   display: flex;
@@ -9,8 +9,8 @@ const Main = styled.main`
 function App() {
   return (
     <Main>
-      <Side />
-      <Chat />
+      <Conversations />
+      <ChatScreen />
     </Main>
   );
 }

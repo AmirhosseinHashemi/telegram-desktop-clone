@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledChat = styled.div`
+const StyledChatScreen = styled.div`
   flex-basis: 65%;
   /* opacity: 0.7; */
 
@@ -28,12 +28,12 @@ const Label = styled.p`
   border-radius: 2rem;
 `;
 
-function Chat() {
+function ChatScreen() {
   return (
-    <StyledChat>
-      <Label>Select a chat to start messaging</Label>
-    </StyledChat>
+    <StyledChatScreen>
+      <Label>Select a chatScreen to start messaging</Label>
+    </StyledChatScreen>
   );
 }
 
-export default Chat;
+export default ChatScreen;
