@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Side from "./features/sideList/Side";
+import Side from "./features/conversations/Side";
 import Chat from "./features/chat/Chat";
 
 const Main = styled.main`
