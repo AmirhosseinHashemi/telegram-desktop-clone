@@ -44,7 +44,7 @@ const Input = styled.input`
 
   &::placeholder {
     font-size: 1.2rem;
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: 0.08rem;
   }
 `;

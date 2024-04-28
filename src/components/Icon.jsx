@@ -13,7 +13,7 @@ const Icon = styled.svg`
   ${(props) =>
     props.type === "secondary" &&
     css`
-      stroke: var(--color-gray-600);
+      stroke: var(--color-gray-400);
     `}
 `;
 
