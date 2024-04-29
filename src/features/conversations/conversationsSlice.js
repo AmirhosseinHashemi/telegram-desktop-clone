@@ -6,6 +6,7 @@ const initialState = {
       id: "AmirhosseinHashemi8",
       name: "Amirhossein Hashemi",
       image: "/images/profile.png",
+      lastSeenAt: "recently",
       lastMessageAt: "Wed",
       unreadMessage: 5,
     },
@@ -35,3 +36,9 @@ export const {addConversation, deleteConversation, setConversationActive} =
   conversationSlice.actions;
 
 export default conversationSlice.reducer;
+
+// select functions
+export const getConversations = (state) => state.conversations.conversations;
+
+export const getActiveConversations = (state) =>
+  state.conversations.activeConversation;

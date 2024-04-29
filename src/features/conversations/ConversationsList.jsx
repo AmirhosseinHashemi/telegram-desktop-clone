@@ -1,4 +1,7 @@
+import {useSelector} from "react-redux";
 import styled from "styled-components";
+import {getActiveConversations, getConversations} from "./conversationsSlice";
+
 import ConversationItem from "./ConversationItem";
 
 const StyledList = styled.ul`
@@ -10,9 +13,19 @@ const StyledList = styled.ul`
 `;
 
 function ConversationsList() {
+  const conversations = useSelector(getConversations);
+  const activeConversation = useSelector(getActiveConversations);
+
   return (
     <StyledList>
-      <ConversationItem />
+      {conversations.length !== 0 &&
+        conversations.map((item) => (
+          <ConversationItem
+            info={item}
+            activeConversationId={activeConversation?.id}
+            key={item.id}
+          />
+        ))}
     </StyledList>
   );
 }

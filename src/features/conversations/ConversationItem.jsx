@@ -1,4 +1,6 @@
-import styled from "styled-components";
+import {useDispatch} from "react-redux";
+import styled, {css} from "styled-components";
+import {setConversationActive} from "./conversationsSlice";
 
 const StyledItem = styled.li`
   display: flex;
@@ -13,9 +15,20 @@ const StyledItem = styled.li`
     background-color: var(--color-gray-100);
   }
 
-  &:active {
-    background-color: var(--color-blue-400);
-  }
+  ${(props) =>
+    props.active &&
+    css`
+      background-color: var(--color-blue-400);
+      color: var(--color-gray-100);
+
+      span {
+        color: var(--color-gray-100);
+      }
+
+      &:hover {
+        background-color: var(--color-blue-400);
+      }
+    `}
 `;
 
 const Image = styled.img`
@@ -66,14 +79,21 @@ const UnreadMessage = styled.span`
   color: var(--color-gray-50);
 `;
 
-function ConversationItem() {
+function ConversationItem({info, activeConversationId}) {
+  const dispatch = useDispatch();
+  const {id, image, name, unreadMessage, lastMessageAt} = info;
+  const isActive = id === activeConversationId ? true : false;
+
   return (
-    <StyledItem>
-      <Image src="/images/profile.png" />
+    <StyledItem
+      onClick={() => dispatch(setConversationActive(id))}
+      active={isActive}
+    >
+      <Image src={image} />
       <Div>
-        <Name>Amirhossein Hashemi</Name>
-        <Date>5:30 AM</Date>
-        <UnreadMessage>1</UnreadMessage>
+        <Name>{name}</Name>
+        <Date>{lastMessageAt}</Date>
+        <UnreadMessage>{unreadMessage}</UnreadMessage>
       </Div>
     </StyledItem>
   );
