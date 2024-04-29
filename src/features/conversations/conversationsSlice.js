@@ -6,7 +6,7 @@ const initialState = {
       id: "AmirhosseinHashemi8",
       name: "Amirhossein Hashemi",
       image: "/images/profile.png",
-      lastSeenAt: "recently",
+      lastSeenAt: "last seen recently",
       lastMessageAt: "Wed",
       unreadMessage: 5,
     },

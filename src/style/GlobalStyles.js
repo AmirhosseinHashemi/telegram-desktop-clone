@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
         --color-gray-200: #e5e7eb;
         --color-gray-300: #d1d5db;
         --color-gray-400: #9ca3af;
+        --color-gray-500: #6b7280;
         --color-gray-600: #4b5563;
         --color-gray-800: #1f2937;
 
