@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
         --color-gray-800: #1f2937;
 
         --color-blue-400: #60a5fa;
+        --color-emerald-100: #d1fae5;
     }
 
     *,

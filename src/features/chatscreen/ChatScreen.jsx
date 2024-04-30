@@ -1,5 +1,5 @@
 import {useSelector} from "react-redux";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 import {getActiveConversations} from "../conversations/conversationsSlice";
 
@@ -8,6 +8,8 @@ import ChatFooter from "./ChatFooter";
 
 const StyledChatScreen = styled.div`
   position: relative;
+  height: 100vh;
+  overflow-y: auto;
   flex-basis: 65%;
 
   background: url("/chat-background.svg"),
@@ -52,6 +54,50 @@ const Label = styled.p`
   border-radius: 2rem;
 `;
 
+const Dialogue = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  padding: 1rem 1.5rem;
+`;
+
+const Message = styled.p`
+  display: flex;
+  flex-direction: column;
+
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--color-gray-800);
+  line-height: 2rem;
+
+  max-width: 50%;
+  padding: 0.6rem 1.2rem;
+
+  span {
+    align-self: flex-end;
+
+    color: var(--color-gray-400);
+    font-size: 1.1rem;
+  }
+
+  ${(props) =>
+    props.from === "you" &&
+    css`
+      align-self: flex-end;
+      border-radius: 2rem 2rem 0 2rem;
+      background-color: var(--color-emerald-100);
+    `}
+
+  ${(props) =>
+    props.from === "contact" &&
+    css`
+      align-self: flex-start;
+      border-radius: 2rem 2rem 2rem 0;
+      background-color: white;
+    `}
+`;
+
 function ChatScreen() {
   const activeConversation = useSelector(getActiveConversations);
 
@@ -65,7 +111,14 @@ function ChatScreen() {
   return (
     <StyledChatScreen>
       <ChatHeader activeConversation={activeConversation} />
-      <ChatFooter />
+      <Dialogue>
+        {activeConversation.dialogue.map((item) => (
+          <Message key={item.index} from={item.from}>
+            {item.content} <span>{item.time}</span>
+          </Message>
+        ))}
+      </Dialogue>
+      <ChatFooter activeConversation={activeConversation} />
     </StyledChatScreen>
   );
 }

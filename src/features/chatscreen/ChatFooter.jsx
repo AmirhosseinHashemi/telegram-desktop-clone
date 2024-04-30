@@ -1,5 +1,8 @@
 import {useState} from "react";
+import {useDispatch} from "react-redux";
 import styled from "styled-components";
+
+import {addDialogue} from "../conversations/conversationsSlice";
 
 import Microphone from "../../components/icons/Microphone";
 import PaperAirplane from "../../components/icons/PaperAirplane";
@@ -36,8 +39,22 @@ const Footer = styled.footer`
   }
 `;
 
-function ChatFooter() {
+function ChatFooter({activeConversation}) {
   const [message, setMessage] = useState("");
+  const dispatch = useDispatch();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!message) return;
+
+    const data = {
+      id: activeConversation.id,
+      content: message,
+    };
+
+    dispatch(addDialogue(data));
+    setMessage("");
+  }
 
   return (
     <Footer>
@@ -45,7 +62,7 @@ function ChatFooter() {
         <PaperClip />
       </button>
 
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Write a message..."

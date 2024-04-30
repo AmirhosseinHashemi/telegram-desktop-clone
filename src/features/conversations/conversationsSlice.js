@@ -9,6 +9,20 @@ const initialState = {
       lastSeenAt: "last seen recently",
       lastMessageAt: "Wed",
       unreadMessage: 5,
+      dialogue: [
+        {
+          index: crypto.randomUUID(),
+          from: "you",
+          content: "Hello",
+          time: "22:15 PM",
+        },
+        {
+          index: crypto.randomUUID(),
+          from: "contact",
+          content: "Hello how are you ?",
+          time: "22:15 PM",
+        },
+      ],
     },
   ],
   activeConversation: null,
@@ -29,11 +43,24 @@ const conversationSlice = createSlice({
         (item) => item.id === action.payload
       );
     },
+    addDialogue(state, action) {
+      const data = {
+        index: crypto.randomUUID(),
+        from: "you",
+        content: action.payload.content,
+        time: new Date().toLocaleTimeString(),
+      };
+      state.activeConversation.dialogue.push(data);
+    },
   },
 });
 
-export const {addConversation, deleteConversation, setConversationActive} =
-  conversationSlice.actions;
+export const {
+  addConversation,
+  deleteConversation,
+  setConversationActive,
+  addDialogue,
+} = conversationSlice.actions;
 
 export default conversationSlice.reducer;
 
