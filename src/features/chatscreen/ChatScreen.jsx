@@ -9,8 +9,10 @@ import ChatFooter from "./ChatFooter";
 const StyledChatScreen = styled.div`
   position: relative;
   height: 100vh;
-  overflow-y: auto;
   flex-basis: 65%;
+
+  display: flex;
+  flex-direction: column;
 
   background: url("/chat-background.svg"),
     linear-gradient(
@@ -59,6 +61,8 @@ const Dialogue = styled.div`
   flex-direction: column;
   gap: 0.6rem;
 
+  overflow-y: auto;
+  margin-bottom: 4.5rem;
   padding: 1rem 1.5rem;
 `;
 
