@@ -1,3 +1,4 @@
+import {useState} from "react";
 import {useSelector} from "react-redux";
 import styled from "styled-components";
 import {getActiveConversations} from "../conversations/conversationsSlice";
@@ -5,6 +6,10 @@ import {getActiveConversations} from "../conversations/conversationsSlice";
 import MagnifyingGlass from "../../components/icons/MagnifyingGlass";
 import Phone from "../../components/icons/Phone";
 import Elipsis from "../../components/icons/Elipsis";
+import PaperClip from "../../components/icons/PaperClip";
+import SmileFace from "../../components/icons/SmileFace";
+import Microphone from "../../components/icons/Microphone";
+import PaperAirplane from "../../components/icons/PaperAirplane";
 
 const StyledChatScreen = styled.div`
   position: relative;
@@ -19,6 +24,10 @@ const StyledChatScreen = styled.div`
       repeat;
 
   button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     border: none;
     background-color: transparent;
 
@@ -49,7 +58,7 @@ const Label = styled.p`
 `;
 
 const Header = styled.header`
-  position: static;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
@@ -87,7 +96,38 @@ const Nav = styled.nav`
   gap: 1rem;
 `;
 
+const Footer = styled.footer`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0.2rem 1.5rem;
+  background-color: white;
+
+  form {
+    flex-grow: 1;
+  }
+
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-left: 0.6rem;
+
+    &::placeholder {
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--color-gray-400);
+    }
+  }
+`;
+
 function ChatScreen() {
+  const [message, setMessage] = useState("");
   const activeConversation = useSelector(getActiveConversations);
 
   if (activeConversation === null)
@@ -117,6 +157,24 @@ function ChatScreen() {
           </button>
         </Nav>
       </Header>
+
+      <Footer>
+        <button>
+          <PaperClip />
+        </button>
+        <form>
+          <input
+            type="text"
+            placeholder="Write a message..."
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+        </form>
+        <button>
+          <SmileFace />
+        </button>
+        <button>{message ? <PaperAirplane /> : <Microphone />}</button>
+      </Footer>
     </StyledChatScreen>
   );
 }
