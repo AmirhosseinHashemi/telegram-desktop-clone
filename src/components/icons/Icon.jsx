@@ -15,6 +15,12 @@ const Icon = styled.svg`
     css`
       stroke: var(--color-gray-400);
     `}
+
+  ${(props) =>
+    props.type === "send" &&
+    css`
+      fill: var(--color-blue-400);
+    `}
 `;
 
 export default Icon;
