@@ -1,15 +1,10 @@
-import {useState} from "react";
 import {useSelector} from "react-redux";
 import styled from "styled-components";
+
 import {getActiveConversations} from "../conversations/conversationsSlice";
 
-import MagnifyingGlass from "../../components/icons/MagnifyingGlass";
-import Phone from "../../components/icons/Phone";
-import Elipsis from "../../components/icons/Elipsis";
-import PaperClip from "../../components/icons/PaperClip";
-import SmileFace from "../../components/icons/SmileFace";
-import Microphone from "../../components/icons/Microphone";
-import PaperAirplane from "../../components/icons/PaperAirplane";
+import ChatHeader from "./ChatHeader";
+import ChatFooter from "./ChatFooter";
 
 const StyledChatScreen = styled.div`
   position: relative;
@@ -57,77 +52,7 @@ const Label = styled.p`
   border-radius: 2rem;
 `;
 
-const Header = styled.header`
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 1rem 1.5rem;
-  background-color: white;
-`;
-
-const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-
-  font-size: 1.4rem;
-
-  p:first-child {
-    font-weight: 600;
-    color: var(--color-gray-800);
-    letter-spacing: 0.07rem;
-  }
-
-  p:last-child {
-    font-weight: 300;
-    color: var(--color-gray-500);
-  }
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-`;
-
-const Footer = styled.footer`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  display: flex;
-  align-items: center;
-
-  padding: 0.2rem 1.5rem;
-  background-color: white;
-
-  form {
-    flex-grow: 1;
-  }
-
-  input {
-    width: 100%;
-    border: none;
-    outline: none;
-    padding-left: 0.6rem;
-
-    &::placeholder {
-      font-size: 1.3rem;
-      font-weight: 300;
-      color: var(--color-gray-400);
-    }
-  }
-`;
-
 function ChatScreen() {
-  const [message, setMessage] = useState("");
   const activeConversation = useSelector(getActiveConversations);
 
   if (activeConversation === null)
@@ -139,42 +64,8 @@ function ChatScreen() {
 
   return (
     <StyledChatScreen>
-      <Header>
-        <Info>
-          <p>{activeConversation.name}</p>
-          <p>{activeConversation.lastSeenAt}</p>
-        </Info>
-
-        <Nav>
-          <button>
-            <MagnifyingGlass />
-          </button>
-          <button>
-            <Phone />
-          </button>
-          <button>
-            <Elipsis />
-          </button>
-        </Nav>
-      </Header>
-
-      <Footer>
-        <button>
-          <PaperClip />
-        </button>
-        <form>
-          <input
-            type="text"
-            placeholder="Write a message..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-        </form>
-        <button>
-          <SmileFace />
-        </button>
-        <button>{message ? <PaperAirplane /> : <Microphone />}</button>
-      </Footer>
+      <ChatHeader activeConversation={activeConversation} />
+      <ChatFooter />
     </StyledChatScreen>
   );
 }
