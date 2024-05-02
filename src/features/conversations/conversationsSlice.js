@@ -12,15 +12,16 @@ const initialState = {
       unreadMessage: 5,
       dialogue: [
         {
-          index: crypto.randomUUID(),
-          from: "you",
-          content: "Hello",
+          id: crypto.randomUUID(),
+          from: "contact",
+          content: "Hello 👋",
           time: "22:15 PM",
         },
         {
-          index: crypto.randomUUID(),
+          id: crypto.randomUUID(),
           from: "contact",
-          content: "Hello how are you ?",
+          content:
+            "I am a junior frontend developer with more than a year experience.",
           time: "22:15 PM",
         },
       ],

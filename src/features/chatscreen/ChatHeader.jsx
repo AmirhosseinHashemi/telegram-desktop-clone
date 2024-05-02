@@ -1,4 +1,8 @@
+import {useSelector} from "react-redux";
 import styled from "styled-components";
+
+import {getActiveConversations} from "../conversations/conversationsSlice";
+
 import MagnifyingGlass from "../../components/icons/MagnifyingGlass";
 import Phone from "../../components/icons/Phone";
 import Elipsis from "../../components/icons/Elipsis";
@@ -43,12 +47,14 @@ const Nav = styled.nav`
   gap: 1rem;
 `;
 
-function ChatHeader({activeConversation}) {
+function ChatHeader() {
+  const {name, lastSeenAt} = useSelector(getActiveConversations);
+
   return (
     <Header>
       <Info>
-        <p>{activeConversation.name}</p>
-        <p>{activeConversation.lastSeenAt}</p>
+        <p>{name}</p>
+        <p>{lastSeenAt}</p>
       </Info>
 
       <Nav>
