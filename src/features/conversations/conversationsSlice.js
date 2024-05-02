@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {getFormatedTime} from "../../utils/helper";
 
 const initialState = {
   conversations: [
@@ -48,7 +49,7 @@ const conversationSlice = createSlice({
         index: crypto.randomUUID(),
         from: "you",
         content: action.payload.content,
-        time: new Date().toLocaleTimeString(),
+        time: getFormatedTime(),
       };
       state.activeConversation.dialogue.push(data);
     },
