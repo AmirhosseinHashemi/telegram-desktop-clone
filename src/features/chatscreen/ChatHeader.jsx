@@ -6,6 +6,7 @@ import {getActiveConversations} from "../conversations/conversationsSlice";
 import List from "../../components/List";
 import MagnifyingGlass from "../../components/icons/MagnifyingGlass";
 import Phone from "../../components/icons/Phone";
+import Button from "../../components/Button";
 
 const Header = styled.header`
   position: sticky;
@@ -58,13 +59,13 @@ function ChatHeader() {
       </Info>
 
       <Nav>
-        <button>
+        <Button>
           <MagnifyingGlass />
-        </button>
+        </Button>
 
-        <button>
+        <Button>
           <Phone />
-        </button>
+        </Button>
 
         {/* <button>
           <Elipsis />

@@ -23,23 +23,6 @@ const StyledChatScreen = styled.div`
         hsla(101, 62%, 48%, 1) 100%
       )
       repeat;
-
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: none;
-    background-color: transparent;
-
-    padding: 0.8rem;
-    border-radius: 2rem;
-  }
-
-  button:active {
-    transition: all 0.15s;
-    background-color: var(--color-gray-100);
-  }
 `;
 
 function ChatScreen() {

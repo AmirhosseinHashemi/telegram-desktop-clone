@@ -11,6 +11,7 @@ import Microphone from "../../components/icons/Microphone";
 import PaperAirplane from "../../components/icons/PaperAirplane";
 import PaperClip from "../../components/icons/PaperClip";
 import SmileFace from "../../components/icons/SmileFace";
+import Button from "../../components/Button";
 
 const Footer = styled.footer`
   position: absolute;
@@ -62,9 +63,9 @@ function ChatFooter() {
 
   return (
     <Footer>
-      <button>
+      <Button>
         <PaperClip />
-      </button>
+      </Button>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -75,18 +76,18 @@ function ChatFooter() {
         />
       </form>
 
-      <button>
+      <Button>
         <SmileFace />
-      </button>
+      </Button>
 
       {message ? (
-        <button>
+        <Button>
           <PaperAirplane />
-        </button>
+        </Button>
       ) : (
-        <button>
+        <Button>
           <Microphone />
-        </button>
+        </Button>
       )}
     </Footer>
   );

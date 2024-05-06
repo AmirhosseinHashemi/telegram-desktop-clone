@@ -6,6 +6,7 @@ import SpeakerXMark from "./icons/SpeakerXMark";
 import UserCircle from "./icons/UserCircle";
 import Trash from "./icons/Trash";
 import Backspace from "./icons/Backspace";
+import Button from "./Button";
 
 const StyledList = styled.div`
   position: relative;
@@ -64,9 +65,9 @@ function List() {
 
   return (
     <StyledList ref={ref}>
-      <button onClick={() => setIsOpen((bool) => !bool)}>
+      <Button active={isOpen} onClick={() => setIsOpen((bool) => !bool)}>
         <Elipsis />
-      </button>
+      </Button>
 
       {isOpen && (
         <Ul>
