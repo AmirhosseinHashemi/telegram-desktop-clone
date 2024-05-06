@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import {useEffect, useRef, useState} from "react";
+import {useState} from "react";
+import useOutsideClick from "../hooks/useOutsideClick";
 
 import Elipsis from "./icons/Elipsis";
 import SpeakerXMark from "./icons/SpeakerXMark";
@@ -49,19 +50,7 @@ const Li = styled.li`
 
 function List() {
   const [isOpen, setIsOpen] = useState(false);
-  const ref = useRef();
-
-  useEffect(function () {
-    const handleClick = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) setIsOpen(false);
-    };
-
-    document.documentElement.addEventListener("click", handleClick);
-
-    return () => {
-      document.documentElement.removeEventListener("click", handleClick);
-    };
-  }, []);
+  const ref = useOutsideClick(() => setIsOpen(false));
 
   return (
     <StyledList ref={ref}>
