@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 import {getActiveConversations} from "../conversations/conversationsSlice";
 
+import List from "../../components/List";
 import MagnifyingGlass from "../../components/icons/MagnifyingGlass";
 import Phone from "../../components/icons/Phone";
-import Elipsis from "../../components/icons/Elipsis";
 
 const Header = styled.header`
   position: sticky;
@@ -66,9 +66,11 @@ function ChatHeader() {
           <Phone />
         </button>
 
-        <button>
+        {/* <button>
           <Elipsis />
-        </button>
+        </button> */}
+
+        <List />
       </Nav>
     </Header>
   );
