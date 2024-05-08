@@ -1,13 +1,10 @@
 import styled from "styled-components";
-import {useState} from "react";
+import {createContext, useContext, useState} from "react";
 import useOutsideClick from "../hooks/useOutsideClick";
 
 import Elipsis from "./icons/Elipsis";
-import SpeakerXMark from "./icons/SpeakerXMark";
-import UserCircle from "./icons/UserCircle";
-import Trash from "./icons/Trash";
-import Backspace from "./icons/Backspace";
 import Button from "./Button";
+import ChevRight from "./icons/ChevRight";
 
 const StyledList = styled.div`
   position: relative;
@@ -30,52 +27,104 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
+  position: relative;
+
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 1.4rem;
   width: 24rem;
 
   font-size: 1.4rem;
   font-weight: 400;
-  text-align: left;
   color: var(--color-gray-800);
 
   cursor: pointer;
   padding: 0.8rem 2rem;
 
+  ul {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+  }
+
   &:hover {
     background-color: var(--color-gray-100);
   }
+
+  &:hover ul {
+    visibility: visible;
+    opacity: 1;
+  }
 `;
 
-function List() {
+const StyledSubMenu = styled(Ul)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(-98%);
+  transition: all 0.15s;
+`;
+
+const ListContext = createContext();
+
+function List({children}) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useOutsideClick(() => setIsOpen(false));
 
-  return (
-    <StyledList ref={ref}>
-      <Button active={isOpen} onClick={() => setIsOpen((bool) => !bool)}>
-        <Elipsis />
-      </Button>
+  const handleOpen = () => setIsOpen((bool) => !bool);
 
-      {isOpen && (
-        <Ul>
-          <Li>
-            <SpeakerXMark /> Mute notifications
-          </Li>
-          <Li>
-            <UserCircle /> View profile
-          </Li>
-          <Li>
-            <Backspace /> Clear history
-          </Li>
-          <Li>
-            <Trash /> Delete chat
-          </Li>
-        </Ul>
-      )}
-    </StyledList>
+  return (
+    <ListContext.Provider value={{isOpen, handleOpen}}>
+      <StyledList ref={ref}>{children}</StyledList>
+    </ListContext.Provider>
   );
 }
+
+function Toggle({icon = <Elipsis />}) {
+  const {isOpen, handleOpen} = useContext(ListContext);
+
+  return (
+    <Button active={isOpen} onClick={handleOpen}>
+      {icon}
+    </Button>
+  );
+}
+
+function Menu({children}) {
+  const {isOpen} = useContext(ListContext);
+
+  return isOpen ? <Ul>{children}</Ul> : null;
+}
+
+function Item({children, icon = null, onClick, showSubMenuIcon}) {
+  return (
+    <Li onClick={onClick}>
+      {icon}
+      {children}
+      {showSubMenuIcon && (
+        <span>
+          <ChevRight />
+        </span>
+      )}
+    </Li>
+  );
+}
+
+function SubMenu({children}) {
+  return <StyledSubMenu>{children}</StyledSubMenu>;
+}
+
+List.Toggle = Toggle;
+List.Menu = Menu;
+List.Item = Item;
+List.SubMenu = SubMenu;
 
 export default List;

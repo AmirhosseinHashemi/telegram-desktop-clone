@@ -8,6 +8,13 @@ import MagnifyingGlass from "../../components/icons/MagnifyingGlass";
 import Phone from "../../components/icons/Phone";
 import Button from "../../components/Button";
 
+import SpeakerXMark from "../../components/icons/SpeakerXMark";
+import UserCircle from "../../components/icons/UserCircle";
+import Trash from "../../components/icons/Trash";
+import Backspace from "../../components/icons/Backspace";
+import MusicalNote from "../../components/icons/MusicalNote";
+import CircleX from "../../components/icons/CircleX";
+
 const Header = styled.header`
   position: sticky;
   top: 0;
@@ -67,11 +74,22 @@ function ChatHeader() {
           <Phone />
         </Button>
 
-        {/* <button>
-          <Elipsis />
-        </button> */}
-
-        <List />
+        <List>
+          <List.Toggle />
+          <List.Menu>
+            <List.Item icon={<SpeakerXMark />} showSubMenuIcon={true}>
+              Mute notifications
+              <List.SubMenu>
+                <List.Item icon={<MusicalNote />}>Select tone </List.Item>
+                <List.Item icon={<CircleX />}>Disable sound</List.Item>
+                <List.Item icon={<SpeakerXMark />}>Mute forever </List.Item>
+              </List.SubMenu>
+            </List.Item>
+            <List.Item icon={<UserCircle />}>View profile</List.Item>
+            <List.Item icon={<Backspace />}>Clear history</List.Item>
+            <List.Item icon={<Trash />}>Delete chat</List.Item>
+          </List.Menu>
+        </List>
       </Nav>
     </Header>
   );

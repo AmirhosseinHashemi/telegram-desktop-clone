@@ -34,6 +34,7 @@ const Footer = styled.footer`
     border: none;
     outline: none;
     padding-left: 0.6rem;
+    font-size: 1.4rem;
 
     &::placeholder {
       font-size: 1.3rem;
