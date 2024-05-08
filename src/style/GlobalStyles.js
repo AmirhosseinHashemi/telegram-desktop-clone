@@ -29,7 +29,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        font-family: "Roboto", sans-serif;
+        font-family: "Roboto", "Vazirmatn", sans-serif;
     }
 
     input,
