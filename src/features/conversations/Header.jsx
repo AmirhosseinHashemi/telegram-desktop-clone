@@ -1,5 +1,8 @@
+import {useState} from "react";
 import styled from "styled-components";
+
 import BarsIcon from "../../components/icons/BarsIcon";
+import Menu from "../../components/Menu";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -27,6 +30,7 @@ const Button = styled.button`
     background-color: var(--color-gray-100);
   }
 `;
+
 const Input = styled.input`
   width: 100%;
   padding: 0.8rem 1.5rem;
@@ -50,13 +54,18 @@ const Input = styled.input`
 `;
 
 function Header() {
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+
   return (
-    <StyledHeader>
-      <Button>
-        <BarsIcon />
-      </Button>
-      <Input placeholder="Search" />
-    </StyledHeader>
+    <>
+      {isOpenMenu && <Menu closeMenu={() => setIsOpenMenu(false)} />}
+      <StyledHeader>
+        <Button onClick={() => setIsOpenMenu((bool) => !bool)}>
+          <BarsIcon />
+        </Button>
+        <Input placeholder="Search" />
+      </StyledHeader>
+    </>
   );
 }
 
