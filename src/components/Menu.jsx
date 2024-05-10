@@ -3,6 +3,14 @@ import styled from "styled-components";
 import useOutsideClick from "../hooks/useOutsideClick";
 
 import ChevDown from "./icons/ChevDown";
+import UserGroup from "./icons/UserGroup";
+import SpeakerWaves from "./icons/SpeakerWaves";
+import UserCircle from "./icons/UserCircle";
+import Phone from "./icons/Phone";
+import Bookmark from "./icons/Bookmark";
+import Cog6Tooth from "./icons/Cog6Tooth";
+import Moon from "./icons/Moon";
+import SwitchButton from "./SwitchButton";
 
 const Overlay = styled.div`
   position: fixed;
@@ -19,6 +27,10 @@ const StyledMenu = styled.div`
   top: 0;
   left: 0;
   bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
   width: 20%;
   background-color: white;
@@ -98,14 +110,37 @@ const Li = styled.li`
   justify-content: flex-start;
   gap: 1.4rem;
 
+  font-size: 1.3rem;
   font-weight: 500;
   text-transform: capitalize;
 
   cursor: pointer;
   padding: 1.2rem 2rem;
 
+  button {
+    margin-left: auto;
+  }
+
   &:hover {
     background-color: var(--color-gray-100);
+  }
+`;
+
+const Footer = styled.footer`
+  margin-top: auto;
+  padding: 0 2rem 2rem 2rem;
+
+  p {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--color-gray-400);
+  }
+
+  p:last-child {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--color-gray-400);
+    margin-top: 0.3rem;
   }
 `;
 
@@ -128,12 +163,35 @@ function Menu({closeMenu}) {
 
         <Nav>
           <Ul>
-            <Li>test item</Li>
-            <Li>test item</Li>
-            <Li>test item</Li>
-            <Li>test item</Li>
+            <Li>
+              <UserGroup type="primarySmall" /> New Group
+            </Li>
+            <Li>
+              <SpeakerWaves type="primarySmall" /> New Channel
+            </Li>
+            <Li>
+              <UserCircle type="primarySmall" /> Contacts
+            </Li>
+            <Li>
+              <Phone type="primarySmall" /> Calls
+            </Li>
+            <Li>
+              <Bookmark type="primarySmall" /> Saved Message
+            </Li>
+            <Li>
+              <Cog6Tooth type="primarySmall" /> Setting
+            </Li>
+            <Li>
+              <Moon type="primarySmall" /> Night Mode
+              <SwitchButton></SwitchButton>
+            </Li>
           </Ul>
         </Nav>
+
+        <Footer>
+          <p>Telegram Desktop Clone</p>
+          <p>Version 5.0.1 x64-About</p>
+        </Footer>
       </StyledMenu>
     </Overlay>,
     document.documentElement
