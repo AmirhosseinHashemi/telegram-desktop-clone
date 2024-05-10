@@ -76,18 +76,39 @@ function ChatHeader() {
 
         <List>
           <List.Toggle />
+
           <List.Menu>
-            <List.Item icon={<SpeakerXMark />} showSubMenuIcon={true}>
+            <List.Item
+              icon={<SpeakerXMark type="primarySmall" />}
+              showSubMenuIcon={true}
+            >
               Mute notifications
               <List.SubMenu>
-                <List.Item icon={<MusicalNote />}>Select tone </List.Item>
-                <List.Item icon={<CircleX />}>Disable sound</List.Item>
-                <List.Item icon={<SpeakerXMark />}>Mute forever </List.Item>
+                <List.Item icon={<MusicalNote type="primarySmall" />}>
+                  Select tone
+                </List.Item>
+
+                <List.Item icon={<CircleX type="primarySmall" />}>
+                  Disable sound
+                </List.Item>
+
+                <List.Item icon={<SpeakerXMark type="primarySmall" />}>
+                  Mute forever
+                </List.Item>
               </List.SubMenu>
             </List.Item>
-            <List.Item icon={<UserCircle />}>View profile</List.Item>
-            <List.Item icon={<Backspace />}>Clear history</List.Item>
-            <List.Item icon={<Trash />}>Delete chat</List.Item>
+
+            <List.Item icon={<UserCircle type="primarySmall" />}>
+              View profile
+            </List.Item>
+
+            <List.Item icon={<Backspace type="primarySmall" />}>
+              Clear history
+            </List.Item>
+
+            <List.Item icon={<Trash type="primarySmall" />}>
+              Delete chat
+            </List.Item>
           </List.Menu>
         </List>
       </Nav>

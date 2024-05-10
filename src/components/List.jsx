@@ -111,7 +111,7 @@ function Item({children, icon = null, onClick, showSubMenuIcon}) {
       {children}
       {showSubMenuIcon && (
         <span>
-          <ChevRight />
+          <ChevRight type="secondarySmall" />
         </span>
       )}
     </Li>

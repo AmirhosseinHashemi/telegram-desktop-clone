@@ -121,7 +121,7 @@ function Menu({closeMenu}) {
             <FullName>Amirhossein Hashemi</FullName>
             <EmojiStatus>Set Emoji Status</EmojiStatus>
             <Button>
-              <ChevDown />
+              <ChevDown type="secondarySmall" />
             </Button>
           </Div>
         </Header>

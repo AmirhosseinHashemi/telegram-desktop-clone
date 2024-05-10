@@ -1,9 +1,9 @@
 import Icon from "./Icon";
 
-function Phone() {
+function Phone({type = "secondary"}) {
   return (
     <Icon
-      type="secondary"
+      type={type}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
