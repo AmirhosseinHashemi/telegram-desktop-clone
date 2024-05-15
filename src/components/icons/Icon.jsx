@@ -22,7 +22,7 @@ const Icon = styled.svg`
     css`
       width: 2.4rem;
       height: 2.4rem;
-      stroke: var(--color-gray-400);
+      stroke: var(--color-gray-500);
     `}
 
   ${(props) =>
@@ -30,7 +30,7 @@ const Icon = styled.svg`
     css`
       width: 1.8rem;
       height: 1.8rem;
-      stroke: var(--color-gray-400);
+      stroke: var(--color-gray-500);
     `}
 
     ${(props) =>
@@ -39,6 +39,22 @@ const Icon = styled.svg`
       width: 2.4rem;
       height: 2.4rem;
       fill: var(--color-blue-400);
+    `}
+
+    ${(props) =>
+    props.type === "warning" &&
+    css`
+      width: 2.4rem;
+      height: 2.4rem;
+      stroke: var(--color-red-500);
+    `}
+
+    ${(props) =>
+    props.type === "warningSmall" &&
+    css`
+      width: 1.8rem;
+      height: 1.8rem;
+      stroke: var(--color-red-500);
     `}
 `;
 
