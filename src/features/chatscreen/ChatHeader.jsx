@@ -4,10 +4,12 @@ import styled from "styled-components";
 import {getActiveConversations} from "../conversations/conversationsSlice";
 
 import List from "../../components/List";
-import MagnifyingGlass from "../../components/icons/MagnifyingGlass";
-import Phone from "../../components/icons/Phone";
+import Modal from "../../components/Modal";
+import UserInfo from "../../components/UserInfo";
 import Button from "../../components/Button";
 
+import MagnifyingGlass from "../../components/icons/MagnifyingGlass";
+import Phone from "../../components/icons/Phone";
 import SpeakerXMark from "../../components/icons/SpeakerXMark";
 import UserCircle from "../../components/icons/UserCircle";
 import Trash from "../../components/icons/Trash";
@@ -60,10 +62,17 @@ function ChatHeader() {
 
   return (
     <Header>
-      <Info>
-        <p>{name}</p>
-        <p>{lastSeenAt}</p>
-      </Info>
+      <Modal>
+        <Modal.Button>
+          <Info>
+            <p>{name}</p>
+            <p>{lastSeenAt}</p>
+          </Info>
+        </Modal.Button>
+        <Modal.Window>
+          <UserInfo />
+        </Modal.Window>
+      </Modal>
 
       <Nav>
         <Button>

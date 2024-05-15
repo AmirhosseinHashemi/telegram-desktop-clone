@@ -17,11 +17,6 @@ const StyledModal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  padding: 2rem;
-  border-radius: 1rem;
-  background-color: white;
-  text-align: center;
 `;
 
 const ModalContext = createContext();
