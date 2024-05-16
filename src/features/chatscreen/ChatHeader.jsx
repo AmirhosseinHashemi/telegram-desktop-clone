@@ -1,7 +1,7 @@
 import {useSelector} from "react-redux";
 import styled from "styled-components";
 
-import {getActiveConversations} from "../conversations/conversationsSlice";
+import {getActiveChat} from "./chatScreenSlice";
 
 import List from "../../components/List";
 import Modal from "../../components/Modal";
@@ -58,14 +58,14 @@ const Nav = styled.nav`
 `;
 
 function ChatHeader() {
-  const {name, lastSeenAt} = useSelector(getActiveConversations);
+  const {fullName, lastSeenAt} = useSelector(getActiveChat);
 
   return (
     <Header>
       <Modal>
         <Modal.Button>
           <Info>
-            <p>{name}</p>
+            <p>{fullName}</p>
             <p>{lastSeenAt}</p>
           </Info>
         </Modal.Button>

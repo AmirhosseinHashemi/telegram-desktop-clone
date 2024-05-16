@@ -1,7 +1,7 @@
 import {useSelector} from "react-redux";
 import styled from "styled-components";
 
-import {getActiveConversations} from "../conversations/conversationsSlice";
+import {getActiveChat} from "./chatScreenSlice";
 
 import ChatHeader from "./ChatHeader";
 import ChatFooter from "./ChatFooter";
@@ -26,9 +26,9 @@ const StyledChatScreen = styled.div`
 `;
 
 function ChatScreen() {
-  const activeConversation = useSelector(getActiveConversations);
+  const activeChat = useSelector(getActiveChat);
 
-  if (activeConversation === null)
+  if (activeChat === null)
     return (
       <StyledChatScreen>
         <Label>Select a chat to start messaging</Label>

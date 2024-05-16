@@ -1,6 +1,7 @@
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import styled, {css} from "styled-components";
-import {setConversationActive} from "./conversationsSlice";
+
+import {getActiveChatId, setChatActive} from "../chatscreen/chatScreenSlice";
 
 const StyledItem = styled.li`
   display: flex;
@@ -79,19 +80,21 @@ const UnreadMessage = styled.span`
   color: var(--color-gray-50);
 `;
 
-function ConversationItem({info, activeConversationId}) {
+function ConversationItem({contact}) {
   const dispatch = useDispatch();
-  const {id, image, name, unreadMessage, lastMessageAt} = info;
-  const isActive = id === activeConversationId ? true : false;
+  const activeChatScreenId = useSelector(getActiveChatId);
+
+  const {id, profileImage, fullName, unreadMessage, lastMessageAt} = contact;
+  const isActive = id === activeChatScreenId ? true : false;
 
   return (
     <StyledItem
-      onClick={() => dispatch(setConversationActive(id))}
+      onClick={() => dispatch(setChatActive(contact))}
       active={isActive}
     >
-      <Image src={image} />
+      <Image src={profileImage} />
       <Div>
-        <Name>{name}</Name>
+        <Name>{fullName}</Name>
         <Date>{lastMessageAt}</Date>
         <UnreadMessage>{unreadMessage}</UnreadMessage>
       </Div>

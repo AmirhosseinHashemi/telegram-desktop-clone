@@ -1,6 +1,7 @@
 import {useSelector} from "react-redux";
 import styled from "styled-components";
-import {getActiveConversations} from "../conversations/conversationsSlice";
+
+import {getActiveChat} from "./chatScreenSlice";
 
 import Message from "./Message";
 import Label from "./Label";
@@ -19,9 +20,9 @@ const StyledDialogue = styled.div`
 `;
 
 function Dialogue() {
-  const {dialogue} = useSelector(getActiveConversations);
+  const {conversations} = useSelector(getActiveChat);
 
-  if (dialogue.length === 0)
+  if (conversations.length === 0)
     return (
       <StyledDialogue>
         <Label>No message here yet</Label>
@@ -30,7 +31,7 @@ function Dialogue() {
 
   return (
     <StyledDialogue>
-      {dialogue.map((item) => (
+      {conversations.map((item) => (
         <Message key={item.id} data={item}></Message>
       ))}
     </StyledDialogue>

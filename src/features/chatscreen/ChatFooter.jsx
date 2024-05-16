@@ -2,10 +2,8 @@ import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import styled from "styled-components";
 
-import {
-  addDialogue,
-  getActiveConversations,
-} from "../conversations/conversationsSlice";
+import {addMessageToChat, getActiveChatId} from "./chatScreenSlice";
+import {addMessageToConversation} from "../../slices/contactSlice";
 
 import Microphone from "../../components/icons/Microphone";
 import PaperAirplane from "../../components/icons/PaperAirplane";
@@ -45,7 +43,7 @@ const Footer = styled.footer`
 `;
 
 function ChatFooter() {
-  const {id} = useSelector(getActiveConversations);
+  const id = useSelector(getActiveChatId);
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
 
@@ -53,12 +51,11 @@ function ChatFooter() {
     e.preventDefault();
     if (!message) return;
 
-    const data = {
-      id: id,
-      content: message,
-    };
+    // update contacts slice
+    dispatch(addMessageToConversation({message, id}));
 
-    dispatch(addDialogue(data));
+    // update chatScreen slice
+    dispatch(addMessageToChat(message));
     setMessage("");
   }
 

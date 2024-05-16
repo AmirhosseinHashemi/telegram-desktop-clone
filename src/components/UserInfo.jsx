@@ -1,7 +1,7 @@
 import {useSelector} from "react-redux";
 import styled from "styled-components";
 
-import {getActiveConversations} from "../features/conversations/conversationsSlice";
+import {getActiveChat} from "../features/chatscreen/chatScreenSlice";
 
 import List from "./List";
 import Button from "./Button";
@@ -203,7 +203,8 @@ const ContactItem = styled.li`
 `;
 
 function UserInfo() {
-  const {image, name, lastSeenAt} = useSelector(getActiveConversations);
+  const {profileImage, fullName, lastSeenAt, id, bio} =
+    useSelector(getActiveChat);
 
   return (
     <StyledUserInfo>
@@ -231,9 +232,9 @@ function UserInfo() {
       </Header>
 
       <PrimaryInfo>
-        <Img src={image} alt="user image" />
+        <Img src={profileImage} alt="user image" />
         <p>
-          {name}
+          {fullName}
           <span>{lastSeenAt}</span>
         </p>
       </PrimaryInfo>
@@ -242,13 +243,13 @@ function UserInfo() {
         <PhoneInfo>
           <InformationCircle />
           <p>
-            0922 348 1646 <span>Phone</span>
+            @{id} <span>username</span>
           </p>
         </PhoneInfo>
 
         <Bio>
           <p>
-            a normal life is boaring 💫 <span>Bio</span>
+            {bio} <span>Bio</span>
           </p>
         </Bio>
 
