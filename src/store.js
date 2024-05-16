@@ -1,9 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
-import conversationsSliceReducer from "./features/conversations/conversationsSlice";
+import contactsSliceReducer from "./slices/contactSlice";
+import chatScreenSliceReducer from "./features/chatscreen/chatScreenSlice";
 
 const store = configureStore({
   reducer: {
-    conversations: conversationsSliceReducer,
+    chatScreen: chatScreenSliceReducer,
+    contacts: contactsSliceReducer,
   },
 });
 
