@@ -38,6 +38,7 @@ const Input = styled.input`
   border: 0.2rem solid var(--color-gray-100);
   outline: none;
   border-radius: 2rem;
+  font-size: 1.2rem;
 
   background-color: var(--color-gray-100);
   transition: background-color 0.15s;
@@ -47,7 +48,6 @@ const Input = styled.input`
   }
 
   &::placeholder {
-    font-size: 1.2rem;
     font-weight: 300;
     letter-spacing: 0.08rem;
   }

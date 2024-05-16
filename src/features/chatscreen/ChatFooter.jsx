@@ -17,28 +17,26 @@ const Footer = styled.footer`
   left: 0;
   right: 0;
 
+  padding: 0.4rem 1.5rem;
+  background-color: white;
+`;
+
+const Form = styled.form`
   display: flex;
   align-items: center;
+`;
 
-  padding: 0.2rem 1.5rem;
-  background-color: white;
+const Input = styled.input`
+  width: 100%;
+  border: none;
+  outline: none;
+  padding-left: 0.6rem;
+  font-size: 1.4rem;
 
-  form {
-    flex-grow: 1;
-  }
-
-  input {
-    width: 100%;
-    border: none;
-    outline: none;
-    padding-left: 0.6rem;
-    font-size: 1.4rem;
-
-    &::placeholder {
-      font-size: 1.3rem;
-      font-weight: 300;
-      color: var(--color-gray-400);
-    }
+  &::placeholder {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--color-gray-400);
   }
 `;
 
@@ -61,32 +59,32 @@ function ChatFooter() {
 
   return (
     <Footer>
-      <Button>
-        <PaperClip />
-      </Button>
+      <Form onSubmit={handleSubmit}>
+        <Button>
+          <PaperClip />
+        </Button>
 
-      <form onSubmit={handleSubmit}>
-        <input
+        <Input
           type="text"
           placeholder="Write a message..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-      </form>
 
-      <Button>
-        <SmileFace />
-      </Button>
+        <Button>
+          <SmileFace />
+        </Button>
 
-      {message ? (
-        <Button>
-          <PaperAirplane />
-        </Button>
-      ) : (
-        <Button>
-          <Microphone />
-        </Button>
-      )}
+        {message ? (
+          <Button>
+            <PaperAirplane />
+          </Button>
+        ) : (
+          <Button>
+            <Microphone />
+          </Button>
+        )}
+      </Form>
     </Footer>
   );
 }
