@@ -97,7 +97,7 @@ const SecondaryInfo = styled.div`
   }
 `;
 
-const PhoneInfo = styled.div`
+const Bio = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -122,7 +122,7 @@ const PhoneInfo = styled.div`
   }
 `;
 
-const Bio = styled(PhoneInfo)`
+const PhoneInfo = styled(Bio)`
   p {
     margin-left: calc(2.4rem + 2.8rem);
   }
@@ -240,18 +240,18 @@ function UserInfo() {
       </PrimaryInfo>
 
       <SecondaryInfo>
-        <PhoneInfo>
-          <InformationCircle />
-          <p>
-            @{id} <span>username</span>
-          </p>
-        </PhoneInfo>
-
         <Bio>
+          <InformationCircle />
           <p>
             {bio} <span>Bio</span>
           </p>
         </Bio>
+
+        <PhoneInfo>
+          <p>
+            @{id} <span>username</span>
+          </p>
+        </PhoneInfo>
 
         <Line />
 
